@@ -12,6 +12,7 @@ import About from './about';
 import Footer from './components/footer';
 import Error from './Error';
 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -23,6 +24,7 @@ import {
 } from "react-router-dom";
 
 function App() {
+
   return (
     <div className="App">
       <Router>
@@ -43,8 +45,9 @@ function App() {
           <Route path="*" element={<Error mesaage={"There is no page like this"}/>}></Route>
         </Routes>
         <Footer />
-
+        
       </Router>
+      
     </div>
   );
 }
