@@ -9,7 +9,7 @@ export default function
         1. can add accordian
         2. add some vertically centered modal
         <br />
-        <Link className="" to="/SingleItem">A Item</Link>
+        <Link className="" to="/SingleItem/:id">A Item</Link>
     </div>
   )
 }

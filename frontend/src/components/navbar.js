@@ -26,7 +26,7 @@ export default function navbar() {
                             <Link className="nav-link" to="/about">About</Link>
                             </li>
                             <li className="nav-item">
-                            <a class="nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                            <a className="nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                                 Contact us
                             </a>
                             </li>

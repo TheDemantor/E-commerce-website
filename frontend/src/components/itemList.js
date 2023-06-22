@@ -1,31 +1,38 @@
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Carousel from "./itemCarousel";
+// import products from '../products';
+// istead we are gonna use useEffect and useSate
+import ThumbItem from './thumbItem';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function itemList() {
-    let c=1;
+
+function ItemList() {
+    // let c=1;
+  const [products, setProducts]=useState([]);
+
+  useEffect(()=>{
+    const fetchProducts = async ()=>{
+      const { data } = await axios('/api/products/');
+      setProducts(data);
+    }
+
+    fetchProducts();
+  }, [])
+
   return (
-    <Row xs={4} md={4} className="g-4">
-      {Array.from({ length: 8 }).map((_, idx) => (
-         
-        
-        <Col key={idx}>
-          <Card>
-          <Carousel/>
-          
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-              </Card.Text>
-            </Card.Body>
-          </Card>
+    <>
+    <Row>
+      {products.map((product)=>
+        <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+          <ThumbItem product={product}></ThumbItem>
         </Col>
-      ))}
+      )}
     </Row>
+    </>
   );
 }
 
-export default itemList;
+export default ItemList;

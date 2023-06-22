@@ -18,6 +18,9 @@ export default function items() {
         <Row>
           <p>Total Items</p>
         </Row>
+        <Row>
+          Sort
+        </Row>
          <ItemList/>
       </Col>
     </Container>

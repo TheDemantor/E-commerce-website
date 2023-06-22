@@ -1,5 +1,34 @@
 {
   "dependencies": {
-    "bootstrap-icons": "^1.10.5"
+    "bootstrap-icons": "^1.10.5",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6"
+  },
+  "name": "royal-savarna",
+  "description": "A full stack e-commerce website built from scratch on MERN. It has all the features that would make it efficient and user friendly. It is responsive and has a catchy UI/UX.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheDemantor/E-commerce-website.git"
+  },
+  "author": "Demantor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheDemantor/E-commerce-website/issues"
+  },
+  "homepage": "https://github.com/TheDemantor/E-commerce-website#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "dotenv": "^16.1.4",
+    "nodemon": "^2.0.22"
   }
 }

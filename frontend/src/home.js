@@ -1,25 +1,46 @@
 import { Link } from "react-router-dom";
-import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
+import { Container } from "react-bootstrap";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+// import { AppContext } from "./context/productContext";
+// import { useProductContext as UPX} from "./context/productContext";
 
 export default function home() {
+  
+  // const { key } = Uc(AppContext);
+  // const { key } =UPX();
+
   return (
     <div className="home">
-
-      <Carousel>
+      {/* <Container>
+              {key} 
+               {/* un commenting line 10 and this u will see that we can access the value passed as value from app provider */}
+      {/* </Container> */}
+      <Carousel autoFocus autoPlay infiniteLoop interval={3000} centerMode centerSlidePercentage={80} dynamicHeight useKeyboardArrows>
                 <div>
                     <img src="images/SMbanners/1.png" />
-                    <p className="legend"></p>
+                </div>
+                <div>
+                    <img src="images/SMbanners/8.png" />
+                </div>
+                <div>
+                    <img src="images/SMbanners/6.png" />
+                </div>
+                <div>
+                    <img src="images/SMbanners/5.png" />
+                </div>
+                <div>
+                    <img src="images/SMbanners/4.png" />
+                </div>
+                <div>
+                    <img src="images/SMbanners/7.png" />
                 </div>
                 <div>
                     <img src="images/SMbanners/2.png" />
-                    <p className="legend">Legend 2</p>
                 </div>
                 <div>
                     <img src="images/SMbanners/3.png" />
-                    <p className="legend">Legend 3</p>
                 </div>
             </Carousel>
 
@@ -102,35 +123,33 @@ export default function home() {
       
       {/* FESTIVAL BANNERS */}
 
-      <div id="carouselExampleInterval2" className="carousel slide w-100 my-10" data-bs-ride="carousel">
-        {/* <div className="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        </div> */}
-        <div className="carousel-inner">
-          <div className="carousel-item" data-bs-interval="2000">
-            <img src="images/LGbanners/2.png" className="d-block w-100" alt="."></img>
-          </div>
-          <div className="carousel-item" data-bs-interval="2000">
-            <img src="images/LGbanners/3.png" className="d-block w-100" alt="."></img>
-          </div>
-          <div className="carousel-item" data-bs-interval="2000">
-            <img src="images/LGbanners/4.png" className="d-block w-100" alt="."></img>
-          </div>
-          <div className="carousel-item active" data-bs-interval="2000">
-            <img src="images/LGbanners/1.png" className="d-block w-100" alt="."></img>
-          </div>
-        </div>
-        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+      <div id="carouselHome2" className="carousel slide my-10" data-bs-ride="carousel">
+        <Carousel id="carouseHome2" className="my-10" autoFocus autoPlay infiniteLoop interval={3000} dynamicHeight useKeyboardArrows>
+                <div>
+                    <img src="images/LGbanners/1.png" />
+                </div>
+                <div>
+                    <img src="images/LGbanners/2.png" />
+                </div>
+                <div>
+                    <img src="images/LGbanners/3.png" />
+                </div>
+                <div>
+                    <img src="images/LGbanners/4.png" />
+                </div>
+                {/* <div>
+                    <img src="images/SMbanners/4.png" />
+                </div>
+                <div>
+                    <img src="images/SMbanners/7.png" />
+                </div>
+                <div>
+                    <img src="images/SMbanners/2.png" />
+                </div>
+                <div>
+                    <img src="images/SMbanners/3.png" />
+                </div> */}
+            </Carousel>
       </div>
 
     </div>

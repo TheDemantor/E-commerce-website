@@ -1,12 +1,12 @@
 
 import './App.css';
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from './components/navbar';
 import Home from './home';
 import Login from './login';
 import Profile from './profile';
 import Items from './items';
-import SingleItem from './SingleItem';
+import SingleItem from './singleItem.js';
 import Cart from './cart';
 import About from './about';
 import Footer from './components/footer';
@@ -38,7 +38,7 @@ function App() {
 
           <Route path="/items/:id" element={<Items/>}></Route>
 
-          <Route path="/singleItem" element={<SingleItem/>}></Route>
+          <Route path="/singleItem/:id" element={<SingleItem/>}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           
           <Route path="/about" element={<About />}></Route>
