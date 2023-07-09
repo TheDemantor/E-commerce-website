@@ -1,13 +1,13 @@
 
 import './App.css';
 import React from 'react';
-import Navbar from './components/navbar';
+import Navbar from './components/Navbar';
 import Home from './home';
 import Login from './login';
 import Profile from './profile';
 import Items from './items';
 import SingleItem from './singleItem.js';
-import Cart from './cart';
+import Cart from './Cart';
 import About from './about';
 import Footer from './components/footer';
 import Error from './Error';
@@ -30,6 +30,8 @@ function App() {
       <Router>
 
         <Navbar />
+        <div style={{    minHeight: "60vh"}}>
+
         <Routes>
           <Route path="/" element={<Home />}></Route>
 
@@ -44,6 +46,7 @@ function App() {
           <Route path="/about" element={<About />}></Route>
           <Route path="*" element={<Error mesaage={"There is no page like this"}/>}></Route>
         </Routes>
+        </div>
         <Footer />
         
       </Router>

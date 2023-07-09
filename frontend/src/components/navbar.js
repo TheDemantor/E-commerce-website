@@ -1,60 +1,54 @@
 import React from 'react'
-import logo from '../logo.svg';
-import {Link} from "react-router-dom";
-import { IoBagHandle } from "react-icons/io5";
+import logo from '../logo_svg.png';
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { FaShoppingBag } from 'react-icons/fa';
+import { Badge } from 'react-bootstrap';
 
-export default function navbar() {
+const Navbar = () => {
+    const { cartItems } = useSelector((state) => state.cart);
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg " data-bs-theme="dark">
                 <div className="container-fluid">
-                <Link className="navbar-brand" to="/">
-                        <img src={logo} alt="Logo" width="30" height="24" className="d-inline-block align-text-top"></img>
-                        Royal Savarna
-                </Link>
-                    
+                    <Link className="navbar-brand" to="/">
+                        <img src={logo} alt="Logo" width="30" height="24" className="d-inline-block align-text-top mx-3"></img>
+                        <strong>Royal Savarna</strong>
+                    </Link>
+
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">Home</Link>
-                            </li>
-                            <li className="nav-item">
-                            <Link className="nav-link" to="/about">About</Link>
-                            </li>
-                            <li className="nav-item">
-                            <a className="nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-                                Contact us
-                            </a>
-                            </li>
-                            
 
-                            
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Categories
-                                </a>
-                                <ul className="dropdown-menu">
-                                    <li><Link className="nav-link" to="/items/:id">Men</Link></li>
-                                    <li><Link className="nav-link" to="/items/:id">Women</Link></li>
-                                    <li><hr className="dropdown-divider"></hr></li>
-                                    <li><Link className="nav-link" to="/items/:id">Kids</Link></li>
-                                </ul>
+                        <ul className="navbar-nav m-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/items/:id"><h5>Men</h5></Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link disabled">Disabled</a>
+                                <Link className="nav-link" to="/items/:id"><h5>Women</h5></Link>
+
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/items/:id"><h5>Kids</h5></Link>
                             </li>
                         </ul>
-                        
-                        
-                        <form className="d-flex" role="search">
-                            <input className="form-control ms-2" type="search" placeholder="Search" aria-label="Search"></input>
-                        </form>
-                            <Link className="nav-link" to="/cart"><IoBagHandle/></Link>
+
+
+                        <Link className="nav-link" to="/cart">
+                            <FaShoppingBag style={{ color: "#ffba24", height: "1.5rem" }} />
+                            { cartItems.length() > 0 && (
+                                <Badge pill bg='light' style={{marginLeft: "5px"}}>
+                                    {cartItems.reduce((a, c)=> a+c.qty, 0)}
+                                </Badge>
+                             )}
+                        </Link>
                         <Link className="nav-link" to="/login"><button type="button" className="btn btn-light ms-2"> Login</button></Link>
+                        <form className="d-flex" role="search">
+                            <input className="form-control ms-2" variant="warning" type="search" placeholder="Search" aria-label="Search"></input>
+                        </form>
                     </div>
 
                 </div>
@@ -62,3 +56,4 @@ export default function navbar() {
         </div>
     )
 }
+export default Navbar

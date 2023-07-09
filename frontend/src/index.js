@@ -3,18 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AppProvider } from './context/productContext';
+// import { AppProvider } from './context/productContext';
+//from Udemy
+import { Provider } from 'react-redux';
+import store from './store';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // this app provider is written here so that the context can be accessed by any chidren of this index, and this will provide the data from the global storage=>Context API
-  <AppProvider>  
+  // <AppProvider>  //for context API
     <React.StrictMode>
-      <App />
+      {/* same function as app protvider, but for redux */}
+      <Provider store={store}> 
+        <App />
+      </Provider>
       {/* this app component will be acting like a children to this provider */}
     </React.StrictMode>
-  </AppProvider>
+  // </AppProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

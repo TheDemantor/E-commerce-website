@@ -13,6 +13,11 @@
 
 .App {
   text-align: center;
+  min-height: 100vh;
+}
+
+.text-left{
+  text-align: left;
 }
 
 .App-header {

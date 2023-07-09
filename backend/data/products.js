@@ -1,10 +1,10 @@
 
 var products = [
 {
-    _id: 1,
     name: "Kurta",
-    cloth: "cotton",
-    pricing: "₹999",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 999,
     description: "A comfortable and stylish traditional Indian garment for men.",
     gender: "men",
     rating: 4,
@@ -13,10 +13,10 @@ var products = [
     brand: "Brand A"
 },
 {
-    _id: 2,
     name: "Dhoti",
-    cloth: "cotton",
-    pricing: "₹799",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 799,
     description: "An unstitched bottom wear commonly worn in India, suitable for festive occasions.",
     gender: "men",
     rating: 3,
@@ -25,22 +25,22 @@ var products = [
     brand: "Brand B"
 },
 {
-    _id: 3,
     name: "Sherwani",
-    cloth: "silk",
-    pricing: "₹4999",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 4999,
     description: "A regal and elegant outfit worn by men on special occasions like weddings.",
     gender: "men",
     rating: 5,
-    in_stock: 10,
+    in_stock: 0,
     reviewCount: 732,
     brand: "Brand C"
 },
 {
-    _id: 4,
     name: "Bandhgala",
-    cloth: "silk",
-    pricing: "₹3499",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 3499,
     description: "A formal jacket-like garment with a Nehru collar, perfect for formal events.",
     gender: "men",
     rating: 4,
@@ -49,10 +49,10 @@ var products = [
     brand: "Brand D"
 },
 {
-    _id: 5,
     name: "Jodhpuri Suit",
-    cloth: "silk",
-    pricing: "₹5999",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 5999,
     description: "An ensemble consisting of a tailored coat and trousers, originated in Jodhpur, Rajasthan.",
     gender: "men",
     rating: 4,
@@ -61,10 +61,10 @@ var products = [
     brand: "Brand E"
 },
 {
-    _id: 6,
     name: "Pathani Suit",
-    cloth: "cotton",
-    pricing: "₹1799",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 1799,
     description: "A two-piece outfit with a knee-length kurta and loose-fitting trousers, popular in Punjab.",
     gender: "men",
     rating: 3,
@@ -73,10 +73,10 @@ var products = [
     brand: "Brand F"
 },
 {
-    _id: 7,
     name: "Nehru Jacket",
-    cloth: "silk",
-    pricing: "₹1999",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 1999,
     description: "A sleeveless jacket with a Mandarin collar, inspired by Jawaharlal Nehru's style.",
     gender: "men",
     rating: 4,
@@ -85,10 +85,10 @@ var products = [
     brand: "Brand G"
 },
 {
-    _id: 8,
     name: "Kurta Pyjama",
-    cloth: "cotton",
-    pricing: "₹1299",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 1299,
     description: "A traditional combination of a knee-length kurta and matching pyjama pants.",
     gender: "men",
     rating: 4,
@@ -97,10 +97,10 @@ var products = [
     brand: "Brand H"
 },
 {
-    _id: 9,
     name: "Angarkha",
-    cloth: "cotton",
-    pricing: "₹1599",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 1599,
     description: "A traditional upper garment with crisscrossed panels, commonly worn in Rajasthan and Uttar Pradesh.",
     gender: "men",
     rating: 3,
@@ -109,10 +109,10 @@ var products = [
     brand: "Brand I"
 },
 {
-    _id: 10,
     name: "Jodhpuri Breeches",
-    cloth: "silk",
-    pricing: "₹2499",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 2499,
     description: "A unique style of fitted trousers with flared ends, typically worn with Jodhpuri jackets.",
     gender: "men",
     rating: 5,
@@ -121,10 +121,10 @@ var products = [
     brand: "Brand J"
 },
 {
-    _id: 1,
     name: "Saree",
-    cloth: "silk",
-    pricing: "₹1999",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 1999,
     description: "A traditional Indian attire for women, consisting of a draped garment.",
     gender: "women",
     rating: 4,
@@ -133,10 +133,10 @@ var products = [
     brand: "Brand X"
 },
 {
-    _id: 2,
     name: "Lehenga Choli",
-    cloth: "silk",
-    pricing: "₹3499",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 3499,
     description: "A two-piece outfit with a long skirt and a matching blouse, worn for special occasions.",
     gender: "women",
     rating: 5,
@@ -145,10 +145,10 @@ var products = [
     brand: "Brand Y"
 },
 {
-    _id: 3,
     name: "Anarkali Suit",
-    cloth: "cotton",
-    pricing: "₹2999",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 2999,
     description: "A flowing, floor-length outfit with a fitted bodice and a flared skirt, popular in India.",
     gender: "women",
     rating: 4,
@@ -157,10 +157,10 @@ var products = [
     brand: "Brand Z"
 },
 {
-    _id: 4,
     name: "Salwar Kameez",
-    cloth: "cotton",
-    pricing: "₹1499",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 1499,
     description: "A traditional three-piece ensemble consisting of a tunic, pants, and a dupatta.",
     gender: "women",
     rating: 4,
@@ -169,10 +169,10 @@ var products = [
     brand: "Brand P"
 },
 {
-    _id: 5,
     name: "Kurti",
-    cloth: "cotton",
-    pricing: "₹799",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 799,
     description: "A shorter tunic-style top, often paired with leggings or jeans.",
     gender: "women",
     rating: 3,
@@ -181,10 +181,10 @@ var products = [
     brand: "Brand Q"
 },
 {
-    _id: 6,
     name: "Palazzo Suit",
-    cloth: "cotton",
-    pricing: "₹1999",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 1999,
     description: "A trendy outfit with wide-legged palazzo pants and a matching top.",
     gender: "women",
     rating: 4,
@@ -193,10 +193,10 @@ var products = [
     brand: "Brand R"
 },
 {
-    _id: 7,
     name: "Sharara",
-    cloth: "silk",
-    pricing: "₹2599",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 2599,
     description: "A flared pants-like garment paired with a long tunic, commonly worn for weddings.",
     gender: "women",
     rating: 4,
@@ -205,10 +205,10 @@ var products = [
     brand: "Brand S"
 },
 {
-    _id: 8,
     name: "Patiala Salwar",
-    cloth: "cotton",
-    pricing: "₹999",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 999,
     description: "A loose, pleated style of pants worn with a short kameez.",
     gender: "women",
     rating: 4,
@@ -217,10 +217,10 @@ var products = [
     brand: "Brand T"
 },
 {
-    _id: 9,
     name: "Angrakha Dress",
-    cloth: "silk",
-    pricing: "₹2799",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 2799,
     description: "A traditional dress with a crossover style and intricate embroidery.",
     gender: "women",
     rating: 4,
@@ -229,10 +229,10 @@ var products = [
     brand: "Brand U"
 },
 {
-    _id: 10,
     name: "Gown",
-    cloth: "silk",
-    pricing: "₹3999",
+    image: "https://i.ytimg.com/",
+    cloth:"silk",
+    pricing: 3999,
     description: "A long, formal dress often worn for special occasions and red carpet events.",
     gender: "women",
     rating: 5,
@@ -241,10 +241,10 @@ var products = [
     brand: "Brand V"
 },
 {
-    _id: 1,
     name: "Denim Jacket",
-    cloth: "denim",
-    pricing: "₹1999",
+    image: "https://i.ytimg.com/",
+    cloth:"denim",
+    pricing: 1999,
     description: "A trendy denim jacket for kids, perfect for casual outings.",
     gender: "kids",
     rating: 4,
@@ -253,10 +253,10 @@ var products = [
     brand: "Brand X"
 },
 {
-    _id: 2,
     name: "Tutu Dress",
-    cloth: "tulle",
-    pricing: "₹2499",
+    image: "https://i.ytimg.com/",
+    cloth:"tulle",
+    pricing: 2499,
     description: "A cute and frilly tutu dress for kids, ideal for parties and special occasions.",
     gender: "kids",
     rating: 5,
@@ -265,10 +265,10 @@ var products = [
     brand: "Brand Y"
 },
 {
-    _id: 3,
     name: "Hoodie",
-    cloth: "cotton",
-    pricing: "₹1599",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 1599,
     description: "A cozy and stylish hoodie for kids, suitable for colder weather.",
     gender: "kids",
     rating: 4,
@@ -277,10 +277,10 @@ var products = [
     brand: "Brand Z"
 },
 {
-    _id: 4,
     name: "Jumpsuit",
-    cloth: "cotton",
-    pricing: "₹1499",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 1499,
     description: "A trendy and comfortable jumpsuit for kids, perfect for playtime and outings.",
     gender: "kids",
     rating: 4,
@@ -289,10 +289,10 @@ var products = [
     brand: "Brand P"
 },
 {
-    _id: 5,
     name: "Graphic T-Shirt",
-    cloth: "cotton",
-    pricing: "₹799",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 799,
     description: "A cool and stylish graphic t-shirt for kids, featuring fun prints and designs.",
     gender: "kids",
     rating: 3,
@@ -301,10 +301,10 @@ var products = [
     brand: "Brand Q"
 },
 {
-    _id: 6,
     name: "Printed Leggings",
-    cloth: "spandex",
-    pricing: "₹1999",
+    image: "https://i.ytimg.com/",
+    cloth:"spandex",
+    pricing: 1999,
     description: "A pair of comfortable and vibrant printed leggings for kids, perfect for everyday wear.",
     gender: "kids",
     rating: 4,
@@ -313,10 +313,10 @@ var products = [
     brand: "Brand R"
 },
 {
-    _id: 7,
     name: "Tulle Skirt",
-    cloth: "tulle",
-    pricing: "₹2599",
+    image: "https://i.ytimg.com/",
+    cloth:"tulle",
+    pricing: 2599,
     description: "A stylish and flouncy tulle skirt for kids, ideal for parties and dress-up.",
     gender: "kids",
     rating: 4,
@@ -325,10 +325,10 @@ var products = [
     brand: "Brand S"
 },
 {
-    _id: 8,
     name: "Denim Overalls",
-    cloth: "denim",
-    pricing: "₹999",
+    image: "https://i.ytimg.com/",
+    cloth:"denim",
+    pricing: 999,
     description: "A trendy pair of denim overalls for kids, perfect for a playful and casual look.",
     gender: "kids",
     rating: 4,
@@ -337,10 +337,10 @@ var products = [
     brand: "Brand T"
 },
 {
-    _id: 9,
     name: "Printed Dress",
-    cloth: "cotton",
-    pricing: "₹2799",
+    image: "https://i.ytimg.com/",
+    cloth:"cotton",
+    pricing: 2799,
     description: "A stylish printed dress for kids, featuring fun patterns and comfortable fabric.",
     gender: "kids",
     rating: 5,
@@ -349,10 +349,10 @@ var products = [
     brand: "Brand U"
 },
 {
-    _id: 10,
     name: "Party Blazer",
-    cloth: "velvet",
-    pricing: "₹3999",
+    image: "https://i.ytimg.com/",
+    cloth:"velvet",
+    pricing: 3999,
     description: "A classy and elegant party blazer for kids, perfect for formal occasions.",
     gender: "kids",
     rating: 5,

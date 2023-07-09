@@ -4,7 +4,7 @@
 // use context hook is used to simplify consumer part of useContext react to make it simpler
 
 // context API ios the global storage which is made accessible to all the childeren in our raect app
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, React } from "react";
 import axios from "axios";
 import reducer from '../reducers/productReducer'
 

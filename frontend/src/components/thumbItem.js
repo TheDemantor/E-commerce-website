@@ -5,7 +5,7 @@ import Rating from './rating'
 
 const thumbItem = ({product}) => {
   return (
-    <> 
+    <div> 
       <Card className='my-3 p-2 rounded'>
         <Link to={`/SingleItem/${product._id}`}>
           <Card.Img src={product.image} variant='top'/>
@@ -29,7 +29,7 @@ const thumbItem = ({product}) => {
           
         </Card.Body>
       </Card>
-    </>
+    </div>
   )
 }
 
