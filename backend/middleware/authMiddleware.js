@@ -4,12 +4,12 @@ import User from '../models/userModel.js';
 
 //Protect Routes
 const protect = asyncHandler( async(req, res, next)=>{
-    let token = res.cookie.jwt;
+    let token = req.cookies.jwt;
     
     if(token){
         try {
             const decode = jwt.verify(token, process.env.JWT_SECRET);
-            req.users = await User.findById(deocde.userId).select('-password');
+            req.user = await User.findById(decode.userId).select('-password');
             next();
         } catch (error) {
             console.log(error);

@@ -6,7 +6,7 @@ import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import cors from 'cors'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
-import cookieParser from 'cookie-parser'; //from this we can access req.cookie
+import cookieParser from 'cookie-parser'; //from this we can access res.cookie
 const port= process.env.PORT || 5000;
 
 connectDB();    //Connect to mongoDB

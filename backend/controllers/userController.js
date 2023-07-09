@@ -70,8 +70,10 @@ const logoutUser = asyncHandler(async (req, res)=>{
 // @desc   get user profile
 // @route  GET /api/users/profile
 // @access Private
-const getUserProfile = asyncHandler(async (req, res)=>{
-    const user = await User.findOne('res.user._id');
+const getUserProfile = asyncHandler(async (req, res, next)=>{
+    const user = await User.findOne(req.user._id);
+    console.log(user);
+    console.log("user");
 
     if(user){
         res.status(200).json({
@@ -92,7 +94,7 @@ const getUserProfile = asyncHandler(async (req, res)=>{
 // @route  PUT /api/users/
 // @access Private
 const updateUserProfile = asyncHandler(async (req, res)=>{
-    const user = await User.findOne('res.user._id');
+    const user = await User.findOne(req.user._id);
 
     if(user){
         user.name = req.body.name || user.name;
@@ -121,28 +123,28 @@ const updateUserProfile = asyncHandler(async (req, res)=>{
 // @desc   get users
 // @route  GET /api/users/
 // @access Private/Admin
-const getUsers = asyncHandler(async (req, res)=>{
+const getUsers = asyncHandler(async (req, res, next)=>{
     res.send('get users');
 });
 
 // @desc   get user by id
 // @route  GET /api/users/:id
 // @access Private/Admin
-const getUserByID = asyncHandler(async (req, res)=>{
+const getUserByID = asyncHandler(async (req, res, next)=>{
     res.send('get user by id');
 });
 
 // @desc   delete users
 // @route  DELETE /api/users/:id
 // @access Private/Admin
-const deleteUser = asyncHandler(async (req, res)=>{
+const deleteUser = asyncHandler(async (req, res, next)=>{
     res.send('delete users');
 });
 
 // @desc   update users
 // @route  PUT /api/users/:id
 // @access Private/Admin
-const updateUser = asyncHandler(async (req, res)=>{
+const updateUser = asyncHandler(async (req, res, next)=>{
     res.send('update users');
 });
 
