@@ -4,7 +4,7 @@ import {Row, Col, Form, Button} from 'react-bootstrap';
 import FormContainer from './components/FormContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from './components/Loading';
-import { useLoginMutation } from './slices/usersApiSlice';
+import { useRegisterMutation } from './slices/usersApiSlice';
 import { setCredentials } from './slices/authSlice';
 import { toast } from 'react-toastify';
 // import { URLSearchParams } from 'url';
@@ -12,15 +12,17 @@ import { toast } from 'react-toastify';
 
 
 
-const Login = () => {
+const Register = () => {
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [login, {isLoading}] =useLoginMutation();
+  const [register, {isLoading}] =useRegisterMutation();
 
   const {userInfo} = useSelector((state)=> state.auth);
 
@@ -38,19 +40,34 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      const res = await login({email, password}).unwrap();
-      dispatch(setCredentials({...res, }));
-      navigate(redirect);
-    } catch (err) {
-      toast.error(err?.data?.message || err.error);
+    if(password!==confirmPassword){
+      toast.error('Password do not match !')
+      return;
+    }else{
+      try {
+        const res = await register({name, email, password}).unwrap();
+        dispatch(setCredentials({...res, }));
+        navigate(redirect);
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
     }
+    
   }
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
       <Form onSubmit={submitHandler}>
+        <Form.Group controlId='name' className='my-3'>
+          <Form.Label>Your full name</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter your good name.'
+            value={name}
+            onChange={(e)=>setName(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
         <Form.Group controlId='email' className='my-3'>
           <Form.Label>Email Id</Form.Label>
           <Form.Control
@@ -69,9 +86,18 @@ const Login = () => {
             onChange={(e)=>setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
+        <Form.Group controlId='confirmpassword' className='my-3'>
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type='password'
+            placeholder='Re-Enter your password please.'
+            value={confirmPassword}
+            onChange={(e)=>setConfirmPassword(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
 
         <Button type='submit' variant='primary'  className='my-3' disabled= {isLoading}>
-          Sign In
+          Register
         </Button>
 
         { isLoading && <Loader/> }
@@ -79,11 +105,11 @@ const Login = () => {
       </Form>
       <Row className="py-3">
         <Col>
-          New Costomer? <Link to={redirect ? `/register?redirect=${redirect}` : '/register' }>Register</Link>
+          Already have an account? <Link to={redirect ? '/login?redirect=/shipping' : '/login' }>Login</Link>
         </Col>
       </Row>
     </FormContainer>
   )
 }
 
-export default Login
+export default Register

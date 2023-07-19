@@ -1,0 +1,35 @@
+[33mcommit 241e4f8df754f1b2aa78fa5aadf9cf1ea5145d60[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Vaibhav <emailtovaibhavgupta@gmail.com>
+Date:   Mon Jul 10 00:40:36 2023 +0530
+
+    Backend auth fixed.
+
+[33mcommit 985c86e4548da2869cb76283ded5f3fcff75b2b9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Vaibhav <emailtovaibhavgupta@gmail.com>
+Date:   Sun Jul 9 23:47:24 2023 +0530
+
+    Done with backend auth.
+
+[33mcommit 3ad99d66fc055f311e9ccebbef253b4be5295790[m
+Author: Vaibhav <emailtovaibhavgupta@gmail.com>
+Date:   Thu Jun 22 17:28:57 2023 +0530
+
+    Done with frontend
+
+[33mcommit daba1e62ede831404bfad94b564d9ba36f63dd95[m
+Author: Vaibhav <emailtovaibhavgupta@gmail.com>
+Date:   Wed Jun 7 16:56:12 2023 +0530
+
+    Fixed footer
+
+[33mcommit 2fd22f09b07bcc82f0a9f01ac66a603db7640430[m
+Author: Vaibhav <emailtovaibhavgupta@gmail.com>
+Date:   Wed Jun 7 15:39:05 2023 +0530
+
+    Inital files added
+
+[33mcommit d25973bb3b6f6846e96576e5298b60743ae76be2[m
+Author: Vaibhav Gupta <86192686+TheDemantor@users.noreply.github.com>
+Date:   Wed Jun 7 15:21:21 2023 +0530
+
+    Initial commit

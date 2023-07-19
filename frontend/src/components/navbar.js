@@ -1,12 +1,34 @@
 import React from 'react'
 import logo from '../logo_svg.png';
-import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import { FaShoppingBag } from 'react-icons/fa';
-import { Badge } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { FaShoppingBag, FaUser } from 'react-icons/fa';
+import { Badge, NavDropdown } from 'react-bootstrap';
+import { useLogoutMutation } from '../slices/usersApiSlice';
+import { logout } from '../slices/authSlice';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const { cartItems } = useSelector((state) => state.cart);
+
+    const { userInfo } = useSelector((state)=>state.auth);
+    
+    const [logoutApiCall] = useLogoutMutation();
+
+    const logoutHandler = async() => {
+        console.log("logout");
+        try {
+            await logoutApiCall().unwrap();
+            dispatch(logout());
+            navigate('/login');
+        } catch (err) {
+            console.log(err);
+            
+          }
+    }
 
     return (
         <div>
@@ -38,17 +60,30 @@ const Navbar = () => {
 
 
                         <Link className="nav-link" to="/cart">
-                            <FaShoppingBag style={{ color: "#ffba24", height: "1.5rem" }} />
-                            { cartItems.length() > 0 && (
-                                <Badge pill bg='light' style={{marginLeft: "5px"}}>
+                        <button type="button" className="btn btn-light ms-2">
+
+                            <FaShoppingBag style={{ color: "#a52a2a", height: "1.5rem" }} />
+                            { cartItems.length > 0 && (
+                                <Badge pill bg='light' style={{marginLeft: "5px" , color:"black"}}>
                                     {cartItems.reduce((a, c)=> a+c.qty, 0)}
                                 </Badge>
                              )}
+                        </button>
                         </Link>
-                        <Link className="nav-link" to="/login"><button type="button" className="btn btn-light ms-2"> Login</button></Link>
-                        <form className="d-flex" role="search">
+                        { userInfo ? (
+                            <NavDropdown className="btn btn-light ms-2" title={userInfo.name} id='username'>
+                                <Link to='/profile'>
+                                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                                </Link>
+                                <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+
+                            </NavDropdown>
+                        ) : (
+                        <Link className="nav-link" to="/login"><button type="button" className="btn btn-light ms-2"><FaUser style={{ color: "#a52a2a"}}/> Login</button></Link>
+                        )}
+                        {/* <form className="d-flex" role="search">
                             <input className="form-control ms-2" variant="warning" type="search" placeholder="Search" aria-label="Search"></input>
-                        </form>
+                        </form> */}
                     </div>
 
                 </div>

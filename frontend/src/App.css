@@ -149,15 +149,15 @@
   width: 30%;
   color: white;
 }
-.ft-cl h6 {
-  text-decoration: underline gray solid 2px;
+.ft-cl h5 {
+  text-decoration: underline rgb(137, 137, 137) solid 2px;
 }
 .ft-cl-ul {
   list-style: none;
   padding-left: 0;
 }
 .ft-cl-it {
-  color: gray;
+  color: rgb(225, 198, 44);
   text-decoration: none;
 }
 
@@ -213,4 +213,16 @@
     }
   }
 
+}
+
+.container{
+  text-align: left;
+}
+
+body{
+
+  .btn-light{
+    color: #a52a2a;
+    
+  }
 }

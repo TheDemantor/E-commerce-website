@@ -22,6 +22,7 @@ const authUser = asyncHandler(async (req, res)=>{
         });
     }else{
         res.status(401);
+        // console.log("Invalid id pw")
         throw new Error('Incorrect email or password !');
     }
 

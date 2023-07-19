@@ -5,6 +5,9 @@ import User from '../models/userModel.js';
 //Protect Routes
 const protect = asyncHandler( async(req, res, next)=>{
     let token = req.cookies.jwt;
+    // console.log("req.cookies");
+    // console.log(req.cookies);
+    
     
     if(token){
         try {

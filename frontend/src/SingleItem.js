@@ -132,7 +132,7 @@ const SingleItem = ()=> {
             )}
               <ListGroup.Item>
                 <Row>
-                  <Button className="btn-block" type button disabled={item.in_stock===0} variant="warning" onClick={() => addToCartHandler()}>Add to cart</Button>
+                  <Button className="btn-block" type="button" disabled={item.in_stock===0} variant="warning" onClick={() => addToCartHandler()}>Add to cart</Button>
                   <Button className="btn-block my-1" type button disabled={item.in_stock===0} variant="outline-success" onClick={checkoutHandler}>Buy Now</Button>
                 </Row>
               </ListGroup.Item>
