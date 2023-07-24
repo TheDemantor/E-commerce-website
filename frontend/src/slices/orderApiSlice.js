@@ -1,4 +1,3 @@
-import React from 'react'
 import { apiSlice } from './apiSlice';
 import { ORDERS_URL } from '../constants';
 

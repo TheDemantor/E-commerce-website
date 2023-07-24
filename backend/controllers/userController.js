@@ -9,11 +9,11 @@ import generateToken from '../utils/generateToken.js';
 const authUser = asyncHandler(async (req, res)=>{
     console.log(req.body);
     const { email, password } = req.body;
-    
     const user= await User.findOne({ email });
     
     if(user && (await user.matchPassword(password))){
-        generateToken(res, user._id);
+        const c= generateToken(res, user._id);
+        console.log(c)
         res.status(200).json({
             _id: user._id,
             name: user.name,
@@ -73,8 +73,8 @@ const logoutUser = asyncHandler(async (req, res)=>{
 // @access Private
 const getUserProfile = asyncHandler(async (req, res, next)=>{
     const user = await User.findOne(req.user._id);
-    console.log(user);
-    console.log("user");
+    // console.log(user);
+    // console.log("user");
 
     if(user){
         res.status(200).json({

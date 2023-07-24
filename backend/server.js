@@ -13,7 +13,10 @@ const port= process.env.PORT || 5000;
 connectDB();    //Connect to mongoDB
 
 const app= express();
-app.use(cors())
+app.use(cors({
+    origin: '*',
+    credentials: true,
+}));
 
 //BODY PARSER MIDDLEWARES
 app.use(express.json());

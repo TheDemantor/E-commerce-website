@@ -1,6 +1,6 @@
 import Product from '../models/productModel.js';
 import asyncHandler from '../middleware/asyncHandler.js';
-import Order from '../models/orderSchema.js'
+import Order from '../models/orderModel.js'
 
 
 // @desc   Create a new order
@@ -9,29 +9,30 @@ import Order from '../models/orderSchema.js'
 const addOrderItems = asyncHandler(async (req, res) => {
     const {
         user,
-        orderItems,
+        orderItem,
         shippingAdd,
         paymentMethod,
-        itemsPrice,
+        itemPrice,
         taxPrice,
         shippingPrice,
         totalPrice,
     } = req.body;
-    if (orderItems && orderItems.length == 0) {
+    if (orderItem && orderItem.length == 0) {
         res.status(400);
         throw new Error('No order items');
     } else {
         // console.log();
         const order = new Order({
             user,
-            orderItems: orderItems.map((x) => ({
+            orderItem: orderItem.map((x) => ({
                 ...x,
+                price:x.pricing,
                 product: x._id,
                 _id: undefined
             })),
             shippingAdd,
             paymentMethod,
-            itemsPrice,
+            itemPrice,
             taxPrice,
             shippingPrice,
             totalPrice,
@@ -53,12 +54,15 @@ const getMyOrders = asyncHandler(async (req, res) => {
 
 // @desc   Get order by id
 // @route  GET /api/orders/:id
-// @access Priavte/Admin
+// @access Priavte
 const getOrderById = asyncHandler(async (req, res) => {
-    const order = await Order.findById(req.params._id).populate('user', 'name email');
+    // console.log(req.params.id);
+    const order = await Order.findById(req.params.id).populate('user', 'name email');
     //populate is used to get some data that is stored in some other collection
 
-    console.log(order);
+    // console.log("this is req");
+    // console.log("this is req ends");
+    console.log("i came to order contoller");
     if (order) {
         res.status(200).json(order);
     } else {

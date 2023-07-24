@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Row, Col, ListGroup, Image, Card, ListGroupItem} from 'react-bootstrap';
+import { Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap';
 import CheckoutSteps from "./components/CheckoutSteps";
 import { toast } from "react-toastify";
 import Loading from './components/Loading';
@@ -19,7 +19,7 @@ const PlaceOrder = () => {
 
     useEffect(()=>{
         if(!cart.shippingAdd.address){
-            navigate('/shpping');
+            navigate('/shipping');
         } else if (!cart.paymentMethod){
             navigate('/payment');
         }
@@ -30,7 +30,7 @@ const PlaceOrder = () => {
             // console.log(user);
             const res = await createOrder({
                 user: user.userInfo._id,
-                orderItems: cart.cartItems,
+                orderItem: cart.cartItems,
                 shippingAdd: cart.shippingAdd, 
                 paymentMethod: cart.paymentMethod,
                 itemPrice: cart.itemsPrice,
@@ -39,7 +39,7 @@ const PlaceOrder = () => {
                 totalPrice: cart.totalPrice,
             }).unwrap();
 
-            dispatch(clearCart());
+            // dispatch(clearCart());
             navigate(`/order/${res._id}`);
         } catch (error) {
             toast.error(error);
@@ -129,8 +129,8 @@ const PlaceOrder = () => {
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                { error && <Message variant='danger'>{ error.data.message } </Message> }
-                                { error && console.log(error.data.stack) }
+                                { error && <Message variant='danger'>{ error.data?.message || error.error } </Message> }
+                                { error && console.log(error.data?.stack || error.error) }
                             </ListGroup.Item>
 
                             <ListGroup.Item>

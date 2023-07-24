@@ -32,16 +32,18 @@ const Login = () => {
     if(userInfo!=null){
       navigate(redirect);
     }
+    
   }, [userInfo, redirect, navigate]);
-
-
-
+  
+  
+  
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       const res = await login({email, password}).unwrap();
       dispatch(setCredentials({...res, }));
       navigate(redirect);
+      // document.cookie = 'dark_mode=true'
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
