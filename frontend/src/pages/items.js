@@ -52,7 +52,7 @@ export default function Items() {
             {isLoading ? (
               <Loading />
             ) : error ? (
-              <Message variant="danger"> {error.data?.massage || error.error} {console.log(error)}</Message>
+              <Message variant="danger"> {error?.data?.massage || error.error} {console.log(error)}</Message>
               
             ) : (
                 <Row>
