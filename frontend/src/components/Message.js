@@ -11,4 +11,4 @@ const Message = ({variant, children}) => {
   )
 }
 
-export default Message
+export default Message;

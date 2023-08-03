@@ -7,13 +7,12 @@ import generateToken from '../utils/generateToken.js';
 // @route  POST /api/users/login
 // @access Public
 const authUser = asyncHandler(async (req, res)=>{
-    console.log(req.body);
+    // console.log(req.body);
     const { email, password } = req.body;
     const user= await User.findOne({ email });
-    
+    // req.user=user;
     if(user && (await user.matchPassword(password))){
-        const c= generateToken(res, user._id);
-        console.log(c)
+        generateToken(res, user.id);
         res.status(200).json({
             _id: user._id,
             name: user.name,
@@ -73,6 +72,7 @@ const logoutUser = asyncHandler(async (req, res)=>{
 // @access Private
 const getUserProfile = asyncHandler(async (req, res, next)=>{
     const user = await User.findOne(req.user._id);
+    console.log(req.cookies);
     // console.log(user);
     // console.log("user");
 
@@ -95,7 +95,7 @@ const getUserProfile = asyncHandler(async (req, res, next)=>{
 // @route  PUT /api/users/
 // @access Private
 const updateUserProfile = asyncHandler(async (req, res)=>{
-    const user = await User.findOne(req.user._id);
+    const user = await User.findById(req.body._id);
 
     if(user){
         user.name = req.body.name || user.name;

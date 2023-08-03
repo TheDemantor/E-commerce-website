@@ -12,19 +12,19 @@ const thumbItem = ({product}) => {
         </Link>
 
         <Card.Body>
+          
+            <Card.Title as="div" className='title'>
           <Link to={`/SingleItem/${product._id}`}>
-            <Card.Title as="div">
               <strong>{product.name}</strong>
-            </Card.Title>
           </Link>
-          <Card.Text>
+              
+              <h5><strong> ₹{product.pricing} </strong></h5>
+            </Card.Title>
+            <span>{product.brand}</span>
+          <Card.Text >
               <Rating rating={product.rating} text={product.reviewCount}/>
           </Card.Text>
           <Card.Text>
-            <h4>
-              <strong>{product.pricing} </strong>
-            </h4>
-            <p>{product.brand}</p>
           </Card.Text>
           
         </Card.Body>

@@ -28,7 +28,9 @@ const rating = ({ rating, text }) => {
             {value>=5? <FaStar/> : value>=4.5 ? <FaStarHalfAlt/>:<FaRegStar/> }
 
         </span>
-        <span> {`${text} reviews`} </span>
+            {(text)&& <span> {`${text} reviews`} </span>
+        
+        }
     </div>
   )
 }

@@ -4,7 +4,9 @@ const router = express.Router();
 // import asyncHandler from '../middleware/asyncHandler.js';
 
 //FROM CONTROLLER
-import { getProducts, getProductById } from '../controllers/productController.js'
+import { getProducts, getProductById, createProduct, updateProduct, deleteProduct, createProductReview } from '../controllers/productController.js'
+import { protect, admin } from '../middleware/authMiddleware.js';
+import checkObjectId from '../middleware/checkObjectId.js'
 
 //THIS WAS BEFORE WE USED THE CONTROLLERS
 // router.get('/', asyncHandler(async (req, res)=>{
@@ -22,8 +24,14 @@ import { getProducts, getProductById } from '../controllers/productController.js
 // }));
 
 //AFTER CONTROLLER HAS BEEN SETUP WE ONLY NEED THIS 
-router.route('/').get(getProducts);
+// router.route('/').get(getProducts).post(protect, admin, createProduct);
+router.route('/').get(getProducts).post( createProduct);
 
-router.route('/:id').get(getProductById);
+router.route('/:id').get(getProductById).put(updateProduct).delete(deleteProduct);
+
+router.route('/:id/reviews').post( createProductReview);
+// router.route('/:id/reviews').post(protect, checkObjectId, createProductReview);
+
+;
 
 export default router;

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { HelmetProvider } from 'react-helmet-async';
 // import { AppProvider } from './context/productContext';
 //from Udemy
 import { Provider } from 'react-redux';
@@ -13,13 +14,16 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // this app provider is written here so that the context can be accessed by any chidren of this index, and this will provide the data from the global storage=>Context API
   // <AppProvider>  //for context API
-    <React.StrictMode>
-      {/* same function as app protvider, but for redux */}
-      <Provider store={store}> 
+  <React.StrictMode>
+    {/* same function as app protvider, but for redux */}
+    <HelmetProvider>
+
+      <Provider store={store}>
         <App />
       </Provider>
       {/* this app component will be acting like a children to this provider */}
-    </React.StrictMode>
+    </HelmetProvider>
+  </React.StrictMode>
   // </AppProvider>
 );
 

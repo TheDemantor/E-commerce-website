@@ -105,6 +105,12 @@
 .item-section {
   margin: 0 0.5rem 0 0.5rem;
 }
+
+.title{
+  display: flex;
+  justify-content: space-between;
+}
+
 .col {
   /* width: 25%;
   height: 30%; */
@@ -161,9 +167,20 @@
   text-decoration: none;
 }
 
-#productSpace{
-  margin: 2rem;
-  padding: 2rem;
+.gb-btn{position: absolute;
+   left: 0px;
+  }
+
+  .card-img-top{
+    height: 15rem;
+    object-fit: cover;
+  }
+
+.productSpace{
+  margin-left: 2rem;
+  padding: 1rem;
+  width: 95vw;
+    padding-left: 10vw;
   /* height: 1000vh; */
   
   & #productPresentation{
@@ -186,6 +203,9 @@
           height: 24rem;
         }
       }
+      div{
+        
+      };
     }
     .carousel *{
       
