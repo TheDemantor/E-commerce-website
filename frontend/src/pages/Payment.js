@@ -39,13 +39,14 @@ const Payment = () => {
             <Form.Check
                type='radio'
                className='my-2'
-               label='Paypal or credit card'
+               label='UPI/Cash on delivery'
                id='Paypal'
                name='paymentMethod'
                value='Paypal'
                checked
                onChange={(e)=>setPaymentMethod(e.target.value)}
-            ></Form.Check>
+               ></Form.Check>
+               {/* label='Paypal or credit card' */}
           </Col>
         </Form.Group>
 

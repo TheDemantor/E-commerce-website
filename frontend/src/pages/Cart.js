@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { Row, Col, ListGroup, Image, Form, Button, Card, ListGroupItem } from 'react-bootstrap';
 import { FaTrash } from 'react-icons/fa';
 import Message from '../components/Message';
-import Color from 'color';
+// import Color from 'color';
 
 
 const Cart = () => {

@@ -7,7 +7,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loading';
 import {
 useGetOrderDetailsQuery,
-usePayOrderMutation,
+// usePayOrderMutation,
 useDeliverOrderMutation
 
 } from '../slices/orderApiSlice';

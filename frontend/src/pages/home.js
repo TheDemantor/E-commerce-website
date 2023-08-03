@@ -18,39 +18,39 @@ export default function home() {
       {/* </Container> */}
       <Carousel autoFocus autoPlay infiniteLoop interval={3000} centerMode centerSlidePercentage={80} dynamicHeight useKeyboardArrows>
                 <div>
-                    <img src="images/SMbanners/1.png" />
+                    <img src="images/SMbanners/1.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/SMbanners/8.png" />
+                    <img src="images/SMbanners/8.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/SMbanners/6.png" />
+                    <img src="images/SMbanners/6.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/SMbanners/5.png" />
+                    <img src="images/SMbanners/5.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/SMbanners/4.png" />
+                    <img src="images/SMbanners/4.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/SMbanners/7.png" />
+                    <img src="images/SMbanners/7.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/SMbanners/2.png" />
+                    <img src="images/SMbanners/2.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/SMbanners/3.png" />
+                    <img src="images/SMbanners/3.png" alt="banner"/>
                 </div>
             </Carousel>
 
       {/* CATEGORIES */}
-      <img className="w-100" src="images/Line-Design.svg" alt="divider-image"></img>
+      <img className="w-100" src="images/Line-Design.svg" alt="divider"></img>
 
       <div className="categories">
         <ul>
           <li className="catCards">
             <div className="card" style={{ width: "18rem" }}>
-              <Link className="ft-cl-it" to="/items">
+              <Link className="ft-cl-it" to="/items/ctg/men">
 
                 <img src="images/categories/1.png" className="card-img-top" alt="..."></img>
                 {/* <div className="card-body"> */}
@@ -61,7 +61,7 @@ export default function home() {
           </li>
           <li className="catCards">
             <div className="card" style={{ width: "18rem" }}>
-              <Link className="ft-cl-it" to="/items">
+              <Link className="ft-cl-it" to="/items/ctg/women">
 
                 <img src="images/categories/2.png" className="card-img-top" alt="..."></img>
                 {/* <div className="card-body"> */}
@@ -72,7 +72,7 @@ export default function home() {
           </li>
           <li className="catCards">
             <div className="card" style={{ width: "18rem" }}>
-              <Link className="ft-cl-it" to="/items">
+              <Link className="ft-cl-it" to="/items/ctg/kids">
 
                 <img src="images/categories/3.png" className="card-img-top" alt="..."></img>
                 {/* <div className="card-body"> */}
@@ -83,7 +83,7 @@ export default function home() {
           </li>
           <li className="catCards">
             <div className="card" style={{ width: "18rem" }}>
-              <Link className="ft-cl-it" to="/items">
+              <Link className="ft-cl-it" to="/items/ctg/women">
 
                 <img src="images/categories/4.png" className="card-img-top" alt="..."></img>
                 {/* <div className="card-body"> */}
@@ -94,7 +94,7 @@ export default function home() {
           </li>
           <li className="catCards">
             <div className="card" style={{ width: "18rem" }}>
-              <Link className="ft-cl-it" to="/items">
+              <Link className="ft-cl-it" to="/items/ctg/men">
 
                 <img src="images/categories/5.png" className="card-img-top" alt="..."></img>
                 {/* <div className="card-body"> */}
@@ -117,7 +117,7 @@ export default function home() {
         </ul>
       </div>
 
-      <img className="w-100" src="images/Line-Design.svg" alt="divider-image"></img>
+      <img className="w-100" src="images/Line-Design.svg" alt="divider"></img>
 
       
       {/* FESTIVAL BANNERS */}
@@ -125,16 +125,16 @@ export default function home() {
       <div id="carouselHome2" className="carousel slide my-10" data-bs-ride="carousel">
         <Carousel id="carouseHome2" className="my-10" autoFocus autoPlay infiniteLoop interval={3000} dynamicHeight useKeyboardArrows>
                 <div>
-                    <img src="images/LGbanners/1.png" />
+                    <img src="images/LGbanners/1.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/LGbanners/2.png" />
+                    <img src="images/LGbanners/2.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/LGbanners/3.png" />
+                    <img src="images/LGbanners/3.png" alt="banner"/>
                 </div>
                 <div>
-                    <img src="images/LGbanners/4.png" />
+                    <img src="images/LGbanners/4.png" alt="banner"/>
                 </div>
                 {/* <div>
                     <img src="images/SMbanners/4.png" />
