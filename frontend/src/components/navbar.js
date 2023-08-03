@@ -9,10 +9,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import SearchBox from './SearchBox';
 
 const Navbar = () => {
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const { cartItems } = useSelector((state) => state.cart);
 
     const { userInfo } = useSelector((state) => state.auth);
