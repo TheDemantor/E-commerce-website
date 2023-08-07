@@ -1,23 +1,24 @@
 import { apiSlice } from './apiSlice';
 import { ORDERS_URL } from '../constants';
-
+console.log(ORDERS_URL)
 const orderApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         createOrder: builder.mutation({
             query: (order) => ({
                 url: ORDERS_URL,
+                
                 method: 'POST',
                 body: { ...order },
             }),
         }),
         getOrderDetails: builder.query({
-            query : (orderId) => ({
+            query: (orderId) => ({
                 url: `${ORDERS_URL}/${orderId}`
             }),
             keepUnusedDataFor: 5,
         }),
         payOrder: builder.mutation({
-            query: ({orderId, details}) => ({
+            query: ({ orderId, details }) => ({
                 url: `${ORDERS_URL}/${orderId}/pay`,
                 method: 'PUT',
                 body: details,
@@ -30,24 +31,24 @@ const orderApiSlice = apiSlice.injectEndpoints({
         //     keepUnusedDataFor: 5,
         //   }),
         getMyOrders: builder.query({
-            query: ({_id: id}) => ({
-              url: `${ORDERS_URL}/myorders`,
-                params:{id}
+            query: ({ _id: id }) => ({
+                url: `${ORDERS_URL}/myorders`,
+                params: { id }
             }),
             keepUnusedDataFor: 5,
         }),
         getOrders: builder.query({
-        query: () => ({
-            url: ORDERS_URL,
-        }),
-        keepUnusedDataFor: 5,
+            query: () => ({
+                url: ORDERS_URL,
+            }),
+            keepUnusedDataFor: 5,
         }),
         deliverOrder: builder.mutation({
             query: (orderId) => ({
-              url: `${ORDERS_URL}/${orderId}/deliver`,
-              method: 'PUT',
+                url: `${ORDERS_URL}/${orderId}/deliver`,
+                method: 'PUT',
             }),
-          }),
+        }),
 
     })
 })
@@ -60,4 +61,4 @@ export const {
     useGetOrdersQuery,
     useDeliverOrderMutation,
     // useGetPaypalClientIdQuery,
-  } = orderApiSlice;
+} = orderApiSlice;
