@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@formspree/react": "^2.5.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
@@ -34,7 +35,6 @@
     "data:import": "node backend/seeder.js",
     "data:destroy": "node backend/seeder.js -d",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
-
   },
   "repository": {
     "type": "git",

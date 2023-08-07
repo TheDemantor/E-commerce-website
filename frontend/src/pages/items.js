@@ -34,7 +34,7 @@ export default function Items() {
   const { keyword = '', ctg = '' } = useParams(); 
   // console.log(keyword, ctg)
   const { data: products, isLoading, error } = useGetProductsQuery({keyword, ctg});
-  // console.log(products)
+  console.log(products)
   return (
     <div>
       <Container className='items'>

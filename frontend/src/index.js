@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { HelmetProvider } from 'react-helmet-async';
 // import { AppProvider } from './context/productContext';
 //from Udemy
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'
 import store from './store';
 
 
