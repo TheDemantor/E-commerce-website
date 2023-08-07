@@ -12,7 +12,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import cookieParser from 'cookie-parser'; //from this we can access res.cookie
 
 
-const port = process.env.PORT || 5000;
+const port = 8000;
 
 connectDB();    //Connect to mongoDB
 
