@@ -1,4 +1,4 @@
-export const BASE_URL = process.env.NODE_ENV === 'development'? 'http://localhost:8000' : process.env.BASE_URL;
+export const BASE_URL = process.env.NODE_ENV === 'development'? 'http://localhost:8000' : 'https://royalsaravna.onrender.com/';
 // export const BASE_URL = 'http://localhost:8000';
 export const PRODUCT_URL = BASE_URL+'api/products';
 export const USER_URL = BASE_URL+"api/users";
