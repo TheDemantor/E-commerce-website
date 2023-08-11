@@ -19,6 +19,9 @@ connectDB();    //Connect to mongoDB
 
 const app = express();
 
+app.use(cors({
+    credentials: true,
+}));
 
 //BODY PARSER MIDDLEWARES
 app.use(express.json());
@@ -26,14 +29,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Cookie parser middleware
 app.use(cookieParser());
-
-
-
-
-app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true,
-}));
 
 
 app.use('/api/products', productRoutes)
