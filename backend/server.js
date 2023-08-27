@@ -12,13 +12,16 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import cookieParser from 'cookie-parser'; //from this we can access res.cookie
 
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 connectDB();    //Connect to mongoDB
 
 
 const app = express();
 
+app.use(cors({
+    credentials: true,
+}));
 
 //BODY PARSER MIDDLEWARES
 app.use(express.json());
@@ -26,11 +29,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Cookie parser middleware
 app.use(cookieParser());
-
-
-
-
-app.use(cors());
 
 
 app.use('/api/products', productRoutes)
