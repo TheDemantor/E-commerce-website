@@ -5,14 +5,14 @@ import User from '../models/userModel.js';
 //Protect Routes
 export const protect = asyncHandler( async(req, res, next)=>{
     // next();
-    console.log(req.cookies);
+    // console.log(req.cookies);
     let token = req.cookies.jwt;
     // console.log("req.cookies");
     // console.log(req);
     if(token){
         try {
             const decode = jwt.verify(token, process.env.JWT_SECRET);
-            console.log(decode);
+            // console.log(decode);
             req.user = await User.findById(decode.userId).select('-password');
             next();
         } catch (error) {

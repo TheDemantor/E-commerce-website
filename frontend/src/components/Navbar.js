@@ -18,7 +18,7 @@ const Navbar = () => {
     const [logoutApiCall] = useLogoutMutation();
 
     const logoutHandler = async () => {
-        console.log("logout");
+        // console.log("logout");
         try {
             await logoutApiCall().unwrap();
             dispatch(logout());

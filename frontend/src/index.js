@@ -7,8 +7,8 @@ import { HelmetProvider } from 'react-helmet-async';
 // import { AppProvider } from './context/productContext';
 //from Udemy
 import { Provider } from 'react-redux'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import store from './store';
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,9 +17,10 @@ root.render(
   <React.StrictMode>
     {/* same function as app protvider, but for redux */}
     <HelmetProvider>
-
       <Provider store={store}>
-        <App />
+      <PayPalScriptProvider  deferLoading={true} >
+          <App />
+        </PayPalScriptProvider>
       </Provider>
       {/* this app component will be acting like a children to this provider */}
     </HelmetProvider>

@@ -56,7 +56,7 @@ const getProductById = asyncHandler(async (req, res) => {
 // @route   POST /api/products
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
-  console.log("Reached cont")
+  // console.log("Reached cont")
   const product = new Product({
     // user: req.user._id,
     user: "64b933d4d01c578b11d3524a",

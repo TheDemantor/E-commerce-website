@@ -28,7 +28,7 @@ const deleteHandler = async (id) => {
 };
 
 const createProductHandler = async () => {
-  console.log("new products");
+  // console.log("new products");
   try {
     await createProduct();
     refetch();
