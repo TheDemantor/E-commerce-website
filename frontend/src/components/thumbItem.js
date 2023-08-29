@@ -21,11 +21,10 @@ const thumbItem = ({product}) => {
               <h5><strong> ₹{product.pricing} </strong></h5>
             </Card.Title>
             <span>{product.brand}</span>
-          <Card.Text >
+          {/* <Card.Text > */}
               <Rating rating={product.rating} text={product.reviewCount}/>
-          </Card.Text>
-          <Card.Text>
-          </Card.Text>
+          {/* </Card.Text> */}
+          
           
         </Card.Body>
       </Card>

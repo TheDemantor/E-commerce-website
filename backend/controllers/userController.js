@@ -72,7 +72,7 @@ const logoutUser = asyncHandler(async (req, res)=>{
 // @access Private
 const getUserProfile = asyncHandler(async (req, res, next)=>{
     const user = await User.findOne(req.user._id);
-    console.log(req.cookies);
+    // console.log(req.cookies);
     // console.log(user);
     // console.log("user");
 
