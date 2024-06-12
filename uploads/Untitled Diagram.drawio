@@ -1,0 +1,38 @@
+<mxfile host="app.diagrams.net" modified="2024-06-12T10:49:23.724Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" version="24.5.3" etag="9NN-SparT-RVkq7Ksahv" type="github">
+  <diagram name="Page-1" id="tlt7lpwQXw0vRFYxZKby">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Database Layer" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="12" y="267" width="195" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Database Layer" style="rounded=1;absoluteArcSize=1;arcSize=14;whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="47" y="292" width="125" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Application Layer" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="4" y="134" width="211" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Application Layer" style="rounded=1;absoluteArcSize=1;arcSize=14;whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="39" y="159" width="141" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Presentation Layer" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry width="220" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Presentation Layer" style="rounded=1;absoluteArcSize=1;arcSize=14;whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="35" y="25" width="150" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=0.99;entryX=0.5;entryY=-0.01;" edge="1" parent="1" source="7" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=0.98;entryX=0.5;entryY=0.01;" edge="1" parent="1" source="5" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
