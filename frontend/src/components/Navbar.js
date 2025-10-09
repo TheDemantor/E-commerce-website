@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react';
 import logo from '../logo_svg.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaShoppingBag, FaUser } from 'react-icons/fa';
-import { Badge, NavDropdown } from 'react-bootstrap';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import { Link, useNavigate } from 'react-router-dom';
@@ -12,109 +11,68 @@ const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { cartItems } = useSelector((state) => state.cart);
-
     const { userInfo } = useSelector((state) => state.auth);
-
     const [logoutApiCall] = useLogoutMutation();
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const logoutHandler = async () => {
-        // console.log("logout");
         try {
             await logoutApiCall().unwrap();
             dispatch(logout());
             navigate('/login');
         } catch (err) {
             console.log(err);
-
         }
     }
 
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg " data-bs-theme="dark">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">
-                        <img src={logo} alt="Logo" width="30" height="24" className="d-inline-block align-text-top mx-3"></img>
-                        <strong>Royal Savarna</strong>
+        <header className="bg-red-700 shadow-lg sticky top-0 z-50">
+            <nav className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 max-w-7xl mx-auto">
+                <Link className="flex items-center space-x-3" to="/">
+                    <img src={logo} alt="Logo" className="w-10 h-10" />
+                    <span className="font-bold text-2xl text-white">Royal Savarna</span>
+                </Link>
+                <div className="flex-1 mx-6">
+                    <SearchBox />
+                </div>
+                <div className="flex items-center space-x-6">
+                    <Link to="/cart" className="relative text-red-200 hover:text-white transition-colors duration-300">
+                        <FaShoppingBag size={24} />
+                        {cartItems.length > 0 && (
+                            <span className="absolute -top-2 -right-3 bg-red-500 text-xs font-semibold text-white rounded-full h-6 w-6 flex items-center justify-center">
+                                {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                            </span>
+                        )}
                     </Link>
-                        <SearchBox/>
-
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
-                        <ul className="navbar-nav m-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/items/ctg/men"><h5>Men</h5></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/items/ctg/women"><h5>Women</h5></Link>
-
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/items/ctg/kids"><h5>Kids</h5></Link>
-                            </li>
-                        </ul>
-                        
-                        <Link className="nav-link" to="/cart">
-                            <button type="button" className="btn btn-light ms-2">
-
-                                <FaShoppingBag  />
-                                {cartItems.length > 0 && (
-                                    <Badge pill bg='light' style={{ marginLeft: "5px", color: "black" }}>
-                                        {cartItems.reduce((a, c) => a + c.qty, 0)}
-                                    </Badge>
-                                )}
+                    {userInfo ? (
+                        <div className="relative">
+                            <button
+                                type="button"
+                                onClick={() => setDropdownOpen((open) => !open)}
+                                onBlur={() => setTimeout(() => setDropdownOpen(false), 150)}
+                                className="flex items-center space-x-2 text-red-200 hover:text-white transition-colors duration-300 focus:outline-none"
+                            >
+                                <FaUser size={20} />
+                                <span className="font-medium text-sm">{userInfo.name}</span>
                             </button>
+                            {dropdownOpen && (
+                                <div className="absolute right-0 mt-2 w-48 bg-red-800 border border-red-700 rounded-md shadow-lg z-50 pointer-events-auto transition-all duration-200 ease-in-out">
+                                    <Link to="/profile" className="block px-4 py-2 text-sm text-red-100 hover:bg-red-700 hover:text-white">Profile</Link>
+                                    <Link to="/profile?tab=orders" className="block px-4 py-2 text-sm text-red-100 hover:bg-red-700 hover:text-white">My Orders</Link>
+                                    <button onClick={logoutHandler} className="block w-full text-left px-4 py-2 text-sm text-red-100 hover:bg-red-700 hover:text-white">Logout</button>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <Link to="/login" className="flex items-center space-x-2 text-red-200 hover:text-white transition-colors duration-300">
+                            <FaUser size={20} />
+                            <span className="font-medium text-sm">Sign In</span>
                         </Link>
-                        {userInfo ? (
-                            <NavDropdown className="btn btn-light ms-2" title={userInfo.name} id='username'>
-                                <Link to='/profile'>
-                                    <NavDropdown.Item>
-                                        <Link className="nav-link" to="/profile">
-                                            Profile
-                                        </Link>
-                                    </NavDropdown.Item>
-                                </Link>
-                                <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
-                                {/* Admin Links */}
-                        {userInfo && userInfo.isAdmin && (
-                            <NavDropdown className="btn btn-dark ms-2" title='Admin' id='adminmenu'>
-
-                                <NavDropdown.Item>
-                                    <Link to="/admin/productlist">
-                                        Product
-                                    </Link>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item>
-                                    <Link to="/admin/orderlist">
-                                        Orders
-                                    </Link>
-                                </NavDropdown.Item>
-                                {/* <Link to='/admin/userlist'>
-                                <NavDropdown.Item>Users</NavDropdown.Item>
-                            </Link> */}
-                            </NavDropdown>
-                        )}
-
-                            </NavDropdown>
-                        ) : (
-                            <Link className="nav-link" to="/login"><button type="button" className="btn btn-light ms-2"><FaUser style={{ color: "#a52a2a" }} /> Login</button></Link>
-                        )}
-
-
-                        {/* <form className="d-flex" role="search">
-                        <input className="form-control ms-2" variant="warning" type="search" placeholder="Search" aria-label="Search"></input>
-                    </form> */}
-
-                        
-                    </div>
-
+                    )}
                 </div>
             </nav>
-        </div>
-    )
+        </header>
+    );
 }
-export default Navbar
+
+export default Navbar;

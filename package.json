@@ -49,6 +49,7 @@
   "homepage": "https://github.com/TheDemantor/E-commerce-website#readme",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@tailwindcss/postcss": "^4.1.11",
     "concurrently": "^8.2.0",
     "nodemon": "^2.0.22"
   }

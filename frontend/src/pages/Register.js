@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import {Row, Col, Form, Button} from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loading';
@@ -12,7 +11,7 @@ import { toast } from 'react-toastify';
 
 
 
-const Register = () => {
+export default function Register() {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -56,60 +55,34 @@ const Register = () => {
   }
 
   return (
-    <FormContainer>
-      <h1>Sign Up</h1>
-      <Form onSubmit={submitHandler}>
-        <Form.Group controlId='name' className='my-3'>
-          <Form.Label>Your full name</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Enter your good name.'
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId='email' className='my-3'>
-          <Form.Label>Email Id</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Enter your email address.'
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId='password' className='my-3'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Enter your password please.'
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId='confirmpassword' className='my-3'>
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Re-Enter your password please.'
-            value={confirmPassword}
-            onChange={(e)=>setConfirmPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-
-        <Button type='submit' variant='primary'  className='my-3' disabled= {isLoading}>
-          Register
-        </Button>
-
-        { isLoading && <Loader/> }
-
-      </Form>
-      <Row className="py-3">
-        <Col>
-          Already have an account? <Link to={redirect ? '/login?redirect=/shipping' : '/login' }>Login</Link>
-        </Col>
-      </Row>
-    </FormContainer>
-  )
+    <div className="flex flex-col md:flex-row max-w-4xl mx-auto mt-10 overflow-hidden min-h-[500px] md:min-h-[600px]">
+      {/* Form Section */}
+      <div className="w-full md:w-1/2 flex items-center justify-center p-6 bg-red-700">
+        <div className="w-full max-w-md">
+          <h2 className="text-2xl font-bold mb-6 text-white text-center">Register</h2>
+          <form onSubmit={submitHandler} className="space-y-4">
+            <div className="mb-3">
+              <label htmlFor="name" className="block mb-1 font-semibold text-white">Name</label>
+              <input id="name" type="text" className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400" value={name} onChange={(e) => setName(e.target.value)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="block mb-1 font-semibold text-white">Email</label>
+              <input id="email" type="email" className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="block mb-1 font-semibold text-white">Password</label>
+              <input id="password" type="password" className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="confirmpassword" className="block mb-1 font-semibold text-white">Confirm Password</label>
+              <input id="confirmpassword" type="password" className="w-full px-3 py-2 border border-red-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+            </div>
+            <button type="submit" className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 disabled:opacity-50" disabled={isLoading}>Register</button>
+          </form>
+        </div>
+      </div>
+      {/* Background Image Section */}
+      <div className="hidden md:block md:w-1/2 bg-cover bg-center" style={{ backgroundImage: "url('/images/full-length-portrait-smiling-family.jpg')" }}></div>
+    </div>
+  );
 }
-
-export default Register

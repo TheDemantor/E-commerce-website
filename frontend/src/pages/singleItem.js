@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from 'react-responsive-carousel';
-import { Col, Row, ListGroup, Card, Button, Form, Image } from 'react-bootstrap';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Rating from '../components/rating'
@@ -72,174 +71,88 @@ const SingleItem = () => {
   };
 
   return (
-    <div >
-      <Link to='/items/' className='btn gb-btn btn-light my-3' ><Button variant="outline-dark">
-        Go back</Button>
+    <div>
+      <Link to='/items/' className='inline-block bg-gray-200 text-gray-800 px-4 py-2 rounded my-3'>
+        Go back
       </Link>
-
       {isLoading ? (
         <Loading />
       ) : error ? (
         <Message variant="danger"> {error.data?.massage || error.status} </Message>
       ) : (
         <>
-
-          <Row className='productSpace'>
-            <Col md={4} id='productPresentation'>
-              {/* <Carousel showThumbs infiniteLoop axis='vertical'> 
-              <div>
-                <img alt="" src="/images/itemImages/1.jpg" />
+          <div className='flex flex-col md:flex-row gap-8 productSpace'>
+            <div className='md:w-1/3 w-full'>
+              <img src={item.image} alt={item.name} className='w-full rounded' />
+            </div>
+            <div className='md:w-2/3 w-full'>
+              <div className='space-y-4 text-left'>
+                <h2 className='text-2xl font-bold'>{item.name}</h2>
+                <h6 className='text-lg text-gray-600'>{item.brand}</h6>
+                <div><strong>Price: ₹{item.pricing}</strong></div>
+                <div>Fabric: {item.cloth}</div>
+                <div>{item.description}</div>
+                <Rating rating={item.rating} text={item.reviewCount} />
+                <div className='flex gap-4 mt-4'>
+                  <button className="bg-yellow-400 text-white px-4 py-2 rounded disabled:opacity-50" disabled={item.in_stock === 0} onClick={() => addToCartHandler()}>Add to cart</button>
+                  <button className="bg-green-500 text-white px-4 py-2 rounded disabled:opacity-50" disabled={item.in_stock === 0} onClick={checkoutHandler}>Buy Now</button>
+                </div>
               </div>
-              <div>
-                <img alt="" src="/images/itemImages/2.jpg" />
-              </div>
-              <div>
-                <img alt="" src="/images/itemImages/3.jpg" />
-              </div>
+            </div>
+          </div>
+          <form onSubmit={submitHandler} className='text-left p-4 bg-gray-50 rounded mt-8'>
+            <h2>Write a Customer Review</h2>
 
-            </Carousel> */}
-              <Image src={item.image} alt={item.name} fluid rounded />
+            {loadingProductReview && <Loading />}
 
-            </Col>
-            <Col md={5} id='productDetails'>
-              {/* <Row > */}
-
-              <ListGroup variant='flush' className='text-left'>
-                <ListGroup.Item >
-                  <h2>{item.name}</h2>
-                  <h6>{item.brand}</h6>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <strong>Price:  ₹{item.pricing}</strong>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  Fabric: {item.cloth}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  {item.description}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Rating rating={item.rating} text={item.reviewCount} />
-                </ListGroup.Item>
-              </ListGroup>
-
-            </Col>
-            <Col md={3} id='itemCart'>
-              <Card>
-                <ListGroup variant='flush'>
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Price:</Col>
-                      <Col><strong>{item.pricing}</strong></Col>
-                    </Row>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Status:</Col>
-                      <Col><strong>{item.in_stock > 0 ? "In stock" : "Out of stock"}</strong></Col>
-                    </Row>
-                  </ListGroup.Item>
-                </ListGroup>
-                <ListGroup variant='flush'>
-                  {item.in_stock > 0 && (
-                    <ListGroup.Item>
-                      <Row>
-                        <Col>Qty: </Col>
-                        <Col>
-                          <Form.Control
-                            as='select'
-                            value={qty}
-                            onChange={(e) => setQty(Number(e.target.value))} >
-                            {[...(Array(item.in_stock).keys())].map((x) => (
-                              <option key={x + 1} value={x + 1}>
-                                {x + 1}
-                              </option>
-                            ))}
-                          </Form.Control>
-                          {/* {console.log([...Array(item.in_stock).keys()])} */}
-                        </Col>
-                      </Row>
-                    </ListGroup.Item>
-                  )}
-                  <ListGroup.Item>
-                    <Row>
-                      <Button className="btn-block" type="button" disabled={item.in_stock === 0} variant="warning" onClick={() => addToCartHandler()}>Add to cart</Button>
-                      <Button className="btn-block my-1" type="button" disabled={item.in_stock === 0} variant="outline-success" onClick={checkoutHandler}>Buy Now</Button>
-                    </Row>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Card>
-            </Col>
-            {/* </Row> */}
-          </Row>
-          <Row>
-            <Col md={7} className='text-left px-4'>
-                <h2>Reviews</h2>
-                {item.review.length === 0 && <Message>No Reviews</Message>}
-                <ListGroup  >
-                  {item.review.map((review) => (
-                    <ListGroup.Item key={review._id}>
-                      <strong>{review.name}</strong>
-                      <Rating rating={review.rating} />
-                      <p>{review.createdAt.substring(0, 10)}</p>
-                      <p>{review.comment}</p>
-                    </ListGroup.Item>
-                  ))}
-                  
-                </ListGroup>
-            </Col>
-            <Col md={5}>
-              <h2>Write a Customer Review</h2>
-
-              {loadingProductReview && <Loading />}
-
-              {userInfo ? (
-                <Form onSubmit={submitHandler} className='text-left p-4'>
-                  <Form.Group className='my-2' controlId='rating'>
-                    <Form.Label>Rating</Form.Label>
-                    <Form.Control
-                      as='select'
-                      required
-                      value={rating}
-                      onChange={(e) => setRating(e.target.value)}
-                    >
-                      <option value=''>Select...</option>
-                      <option value='1'>1 - Poor</option>
-                      <option value='2'>2 - Fair</option>
-                      <option value='3'>3 - Good</option>
-                      <option value='4'>4 - Very Good</option>
-                      <option value='5'>5 - Excellent</option>
-                    </Form.Control>
-                  </Form.Group>
-                  <Form.Group className='my-2' controlId='comment'>
-                    <Form.Label>Comment</Form.Label>
-                    <Form.Control
-                      as='textarea'
-                      row='3'
-                      required
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
-                    ></Form.Control>
-                  </Form.Group>
-                  <Button
-                    disabled={loadingProductReview}
-                    type='submit'
-                    variant='primary'
+            {userInfo ? (
+              <div className='space-y-4'>
+                <div className='my-2'>
+                  <label htmlFor='rating' className='block mb-1'>Rating</label>
+                  <select
+                    id='rating'
+                    required
+                    value={rating}
+                    onChange={(e) => setRating(e.target.value)}
+                    className='block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
                   >
-                    Submit
-                  </Button>
-                </Form>
-              ) : (
-                <Message>
-                  Please <Link to='/login'>sign in</Link> to write a review
-                </Message>
-              )}
-            </Col>
-          </Row>
+                    <option value=''>Select...</option>
+                    <option value='1'>1 - Poor</option>
+                    <option value='2'>2 - Fair</option>
+                    <option value='3'>3 - Good</option>
+                    <option value='4'>4 - Very Good</option>
+                    <option value='5'>5 - Excellent</option>
+                  </select>
+                </div>
+                <div className='my-2'>
+                  <label htmlFor='comment' className='block mb-1'>Comment</label>
+                  <textarea
+                    id='comment'
+                    rows='3'
+                    required
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    className='block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
+                  ></textarea>
+                </div>
+                <button
+                  disabled={loadingProductReview}
+                  type='submit'
+                  className='bg-blue-600 text-white px-4 py-2 rounded disabled:opacity-50'
+                >
+                  Submit
+                </button>
+              </div>
+            ) : (
+              <Message>
+                Please <Link to='/login' className='underline'>sign in</Link> to write a review
+              </Message>
+            )}
+          </form>
         </>
       )}
+    </div>
+  );
+};
 
-          </div>
-          )
-}
-          export default SingleItem
+export default SingleItem;

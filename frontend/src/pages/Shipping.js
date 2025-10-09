@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
 import FormContainer from '../components/FormContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { saveShippingAdd } from '../slices/cartSlice';
 import CheckoutSteps from '../components/CheckoutSteps';
 
-const Shipping = () => {
+export default function Shipping() {
     const cart = useSelector((state)=>state.cart);
     const { shippingAdd } = cart;
     
@@ -26,54 +25,57 @@ const Shipping = () => {
 
     }
   return (
-    <FormContainer>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
+      <h2 className="text-2xl font-bold mb-6">Shipping</h2>
+      <form onSubmit={submitHandler} className="space-y-4">
         <CheckoutSteps step1 step2/>
-        <h1>Shipping</h1>
-        <Form onSubmit={submitHandler}>
-            <Form.Group>
-                <Form.Label>Address</Form.Label>
-                <Form.Control 
+            <div>
+                <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
+                <input
                     type='text' 
+                    id="address"
                     placeholder='Enter street address'
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)}>
-                </Form.Control>
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>City</Form.Label>
-                <Form.Control 
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+            </div>
+            <div>
+                <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
+                <input
                     type='text' 
+                    id="city"
                     placeholder='Enter your city'
                     value={city}
-                    onChange={(e) => setCity(e.target.value)}>
-                </Form.Control>
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>PostalCode</Form.Label>
-                <Form.Control 
+                    onChange={(e) => setCity(e.target.value)}
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+            </div>
+            <div>
+                <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700">PostalCode</label>
+                <input
                     type='text' 
+                    id="postalCode"
                     placeholder='Enter postalCode'
                     value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}>
-                </Form.Control>
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>Country</Form.Label>
-                <Form.Control 
+                    onChange={(e) => setPostalCode(e.target.value)}
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+            </div>
+            <div>
+                <label htmlFor="country" className="block text-sm font-medium text-gray-700">Country</label>
+                <input
                     type='text' 
+                    id="country"
                     placeholder='Enter country'
                     value={country}
-                    onChange={(e) => setCountry(e.target.value)}>
-                </Form.Control>
-            </Form.Group>
+                    onChange={(e) => setCountry(e.target.value)}
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+            </div>
 
-            <Button type='submit' variant='primary' className='my-2'>
-                Continue
-            </Button>
-
-        </Form>
-    </FormContainer>
-  )
+            <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50">Continue</button>
+      </form>
+    </div>
+  );
 }
-
-export default Shipping

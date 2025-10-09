@@ -1,8 +1,7 @@
 
-import './App.css';
 import React from 'react';
 import Navbar from './components/Navbar';
-
+import './index.css';
 import Home from './pages/home';
 import Login from './pages/login';
 import Register from './pages/Register';
@@ -17,13 +16,12 @@ import Shipping from './pages/Shipping';
 import PlaceOrder from './pages/PlaceOrder';
 import OrderScreen from './pages/OrderScreen';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css';
 import PrivateRouter from './components/PrivateRouter';
 import AdminRouter from './components/AdminRouter';
 import OrderList from './admin/OrderList';
 import ProductList from './admin/ProductList';
 import ProductEdit from './admin/ProductEdit';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Routes,
@@ -74,7 +72,7 @@ function App() {
           </Routes>
         </div>
         <Footer />
-        <ToastContainer />
+        <ToastContainer position="top-center" autoClose={2000} />
       </Router>
 
     </div>

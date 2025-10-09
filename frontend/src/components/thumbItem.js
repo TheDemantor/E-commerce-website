@@ -1,35 +1,29 @@
-import React from 'react'
-import { Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import Rating from './rating'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Rating from './rating';
 
-const thumbItem = ({product}) => {
+const thumbItem = ({ product }) => {
   return (
-    <div> 
-      <Card className='my-3 p-2 rounded'>
-        <Link to={`/SingleItem/${product._id}`}>
-          <Card.Img src={product.image} variant='top'/>
-        </Link>
-
-        <Card.Body>
-          
-            <Card.Title as="div" className='title'>
-          <Link to={`/SingleItem/${product._id}`}>
-              <strong>{product.name}</strong>
+    <div className="my-3 p-2 rounded shadow bg-white">
+      <Link to={`/SingleItem/${product._id}`}>
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-60 object-cover rounded"
+        />
+      </Link>
+      <div className="py-2 px-1">
+        <div className="flex justify-between items-center mb-1">
+          <Link to={`/SingleItem/${product._id}`} className="text-lg font-semibold hover:underline">
+            {product.name}
           </Link>
-              
-              <h5><strong> ₹{product.pricing} </strong></h5>
-            </Card.Title>
-            <span>{product.brand}</span>
-          {/* <Card.Text > */}
-              <Rating rating={product.rating} text={product.reviewCount}/>
-          {/* </Card.Text> */}
-          
-          
-        </Card.Body>
-      </Card>
+          <h5 className="text-xl font-bold text-green-700">₹{product.pricing}</h5>
+        </div>
+        <span className="block text-sm text-gray-500 mb-1">{product.brand}</span>
+        <Rating rating={product.rating} text={product.reviewCount} />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default  thumbItem
+export default thumbItem;

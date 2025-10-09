@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col, Table, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTimes } from 'react-icons/fa';
@@ -11,7 +10,7 @@ import { useProfileMutation } from '../slices/usersApiSlice';
 import { useGetMyOrdersQuery } from '../slices/orderApiSlice';
 import { setCredentials } from '../slices/authSlice';
 
-const Profile = () => {
+export default function Profile() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -53,113 +52,120 @@ const Profile = () => {
 
 
   return (
-    <Row>
-      <Col md={3}>
-        <h2>Profile</h2>
-
-        <Form onSubmit={submitHandler} className='text-left'>
-          <Form.Group className='my-2' controlId='name'>
-            <Form.Label>Name</Form.Label>
-            <Form.Control
+    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded shadow">
+      <h2 className="text-2xl font-bold mb-6">Profile</h2>
+      <form onSubmit={submitHandler} className="space-y-4 text-left">
+          <div className='my-2'>
+            <label htmlFor='name' className='block text-sm font-medium text-gray-700'>Name</label>
+            <input
               type='name'
+              id='name'
               placeholder='Enter name'
               value={name}
               onChange={(e) => setName(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
+              className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50'
+            />
+          </div>
 
-          <Form.Group className='my-2' controlId='email'>
-            <Form.Label>Email Address</Form.Label>
-            <Form.Control
+          <div className='my-2'>
+            <label htmlFor='email' className='block text-sm font-medium text-gray-700'>Email Address</label>
+            <input
               type='email'
+              id='email'
               placeholder='Enter email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
+              className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50'
+            />
+          </div>
 
-          <Form.Group className='my-2' controlId='password'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
+          <div className='my-2'>
+            <label htmlFor='password' className='block text-sm font-medium text-gray-700'>Password</label>
+            <input
               type='password'
+              id='password'
               placeholder='Enter password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
+              className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50'
+            />
+          </div>
 
-          <Form.Group className='my-2' controlId='confirmPassword'>
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
+          <div className='my-2'>
+            <label htmlFor='confirmPassword' className='block text-sm font-medium text-gray-700'>Confirm Password</label>
+            <input
               type='password'
+              id='confirmPassword'
               placeholder='Confirm password'
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
+              className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50'
+            />
+          </div>
 
-          <Button type='submit' variant='primary'>
-            Update
-          </Button>
+          <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50">Update</button>
           {loadingUpdateProfile && <Loader />}
-        </Form>
-      </Col>
-      <Col md={9}>
-        <h2>My Orders</h2>
-        {isLoading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant='danger'>
-            {error?.data?.message || error.error}
-            {console.log(error?.data?.stack || error.error)}
-          </Message>
-        ) : (
-          <Table striped hover responsive className='table-sm'>
-            <thead>
+      </form>
+      <div className="mt-10">
+        <h3 className="text-xl font-bold mb-4">Order History</h3>
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DATE</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TOTAL</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PAID</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DELIVERED</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {isLoading ? (
               <tr>
-                <th>ID</th>
-                <th>DATE</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
-                <th></th>
+                <td colSpan="6" className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                  <Loader />
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
+            ) : error ? (
+              <tr>
+                <td colSpan="6" className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium text-red-600">
+                  {error?.data?.message || error.error}
+                  {console.log(error?.data?.stack || error.error)}
+                </td>
+              </tr>
+            ) : (
+              orders.map((order) => (
                 <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{order._id}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.createdAt.substring(0, 10)}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{order.totalPrice}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
                     ) : (
-                      <FaTimes style={{ color: 'red' }} />
+                      <FaTimes className="text-red-500" />
                     )}
                   </td>
-                  <td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {order.isDelivered ? (
                       order.deliveredAt.substring(0, 10)
                     ) : (
-                      <FaTimes style={{ color: 'red' }} />
+                      <FaTimes className="text-red-500" />
                     )}
                   </td>
-                  <td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <Link to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>
+                      <button className="bg-gray-200 text-gray-800 px-3 py-1 rounded hover:bg-gray-300">
                         Details
-                      </Button>
+                      </button>
                     </Link>
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
-      </Col>
-    </Row>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
-
-export default Profile

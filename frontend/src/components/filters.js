@@ -1,36 +1,28 @@
-import React from 'react'
-import { Container, Col, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const filters = () => {
   return (
-    <Container className="filter-section">
-        <Col>
-          <Row>  
-          <ul className="m-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/items/ctg/men"><h5>Men</h5></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/items/ctg/women"><h5>Women</h5></Link>
-
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/items/ctg/kids"><h5>Kids</h5></Link>
-                            </li>
-                        </ul>
-          </Row>
-          <Row>         </Row>
-          <Row>        </Row>
-        </Col>
-        <br />
-        <Col>
-          <Row>         </Row>
-          <Row>         </Row>
-          <Row>         </Row>
-        </Col>
-    </Container>
-  )
+    <div className="rounded border border-red-200 bg-red-50 p-4 mb-4">
+      <ul className="flex flex-wrap justify-center gap-4">
+        <li>
+          <Link className="block px-4 py-2 rounded bg-red-600 text-white font-semibold hover:bg-red-700 transition" to="/items/ctg/men">
+            Men
+          </Link>
+        </li>
+        <li>
+          <Link className="block px-4 py-2 rounded bg-red-500 text-white font-semibold hover:bg-red-600 transition" to="/items/ctg/women">
+            Women
+          </Link>
+        </li>
+        <li>
+          <Link className="block px-4 py-2 rounded bg-red-400 text-white font-semibold hover:bg-red-500 transition" to="/items/ctg/kids">
+            Kids
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
 }
 
-export default filters
+export default filters;

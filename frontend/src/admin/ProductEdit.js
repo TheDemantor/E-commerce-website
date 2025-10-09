@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loading';
 import FormContainer from '../components/FormContainer';
@@ -12,7 +11,7 @@ import {
 } from '../slices/productApiSlice';
 
 
-const ProductEdit = () => {
+export default function ProductEdit() {
   const { id: productId } = useParams();
 
   const [name, setName] = useState('');
@@ -88,119 +87,113 @@ const ProductEdit = () => {
   };
 
   return (
-    <>
-      <Link to='/admin/productlist' className='btn btn-light my-3 gb-btn'>
-        Go Back
-      </Link>
-      <FormContainer style={{ width: '50%' }}>
-
+    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded shadow">
+      <h2 className="text-2xl font-bold mb-6">Edit Product</h2>
+      <form onSubmit={submitHandler} className="space-y-4">
         <div className='productSpace'>
-          <h1>Edit Product</h1>
           {loadingUpdate && <Loader />}
           {isLoading ? (
             <Loader />
           ) : error ? (
             <Message variant='danger'>{error.data.message}</Message>
           ) : (
-            <Form onSubmit={submitHandler}>
-              <Form.Group controlId='name'>
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type='name'
-                  placeholder='Enter name'
+            <>
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input
+                  type="name"
+                  className="form-control"
+                  placeholder="Enter name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group controlId='pricing'>
-                <Form.Label>Price</Form.Label>
-                <Form.Control
-                  type='number'
-                  placeholder='Enter price'
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="pricing">Price</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter price"
                   value={pricing}
                   onChange={(e) => setPricing(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group controlId='image'>
-                <Form.Label>Image</Form.Label>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter image url'
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="image">Image</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter image url"
                   value={image}
                   onChange={(e) => setImage(e.target.value)}
-                ></Form.Control>
-                <Form.Control
-                  label='Choose File'
+                />
+                <input
+                  type="file"
                   onChange={uploadFileHandler}
-                  type='file'
-                ></Form.Control>
+                  className="form-control"
+                />
                 {loadingUpload && <Loader />}
-              </Form.Group>
-
-              <Form.Group controlId='brand'>
-                <Form.Label>Brand</Form.Label>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter brand'
+              </div>
+              <div className="form-group">
+                <label htmlFor="brand">Brand</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter brand"
                   value={brand}
                   onChange={(e) => setBrand(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-              <Form.Group controlId='cloth'>
-                <Form.Label>Fabric Used</Form.Label>
-                <Form.Control
-                  type='text'
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cloth">Fabric Used</label>
+                <input
+                  type="text"
+                  className="form-control"
                   placeholder="Enter cloth's fabric"
                   value={cloth}
                   onChange={(e) => setCloth(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group controlId='in_stock'>
-                <Form.Label>Count In Stock</Form.Label>
-                <Form.Control
-                  type='number'
-                  placeholder='Enter in stock'
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="in_stock">Count In Stock</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter in stock"
                   value={in_stock}
                   onChange={(e) => setCountInStock(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group controlId='category'>
-                <Form.Label>Category</Form.Label>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter category'
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="category">Category</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter category"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group controlId='description'>
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter description'
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Description</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-              <Button
-                type='submit'
-                variant='primary'
-                style={{ marginTop: '1rem' }}
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
               >
                 Update
-              </Button>
-            </Form>
+              </button>
+            </>
           )}
         </div>
-      </FormContainer>
-
-    </>
-  )
+      </form>
+    </div>
+  );
 }
-
-export default ProductEdit

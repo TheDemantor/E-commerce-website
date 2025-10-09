@@ -1,17 +1,17 @@
+import React from 'react';
 import { Link } from 'react-router-dom'
-import { Table, Button } from 'react-bootstrap';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import Message from '../components/Message';
 import Loading from '../components/Loading';
 import { useGetOrdersQuery } from '../slices/orderApiSlice';
 
 
-const OrderList = () => {
+export default function OrderList() {
   const { data: orders, isLoading, error } = useGetOrdersQuery();
 
   return (
-    <>
-      <h1>Orders</h1>
+    <div className="max-w-6xl mx-auto mt-10 p-6 bg-white rounded shadow">
+      <h2 className="text-2xl font-bold mb-6">Order List</h2>
       {isLoading ? (
         <Loading />
       ) : error ? (
@@ -19,60 +19,58 @@ const OrderList = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
-      <Table striped bordered hover responsive className='table-sm'>
-        <thead>
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
           <tr>
-            <th>ID</th>
-            <th>USER</th>
-            <th>DATE</th>
-            <th>TOTAL</th>
-            <th>PAID</th>
-            <th>DELIVERED</th>
-            <th></th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">USER</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DATE</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TOTAL</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PAID</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DELIVERED</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-white divide-y divide-gray-200">
           {orders.map((order) => (
             <tr key={order._id}>
-              <td>{order._id}</td>
-              <td>{order.user && order.user.name}</td>
-              <td>{order.createdAt.substring(0, 10)}</td>
-              <td>₹{order.totalPrice}</td>
-              <td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{order._id}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.user && order.user.name}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.createdAt.substring(0, 10)}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">₹{order.totalPrice}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 {order.isPaid ? (
                   <>
-                  <FaCheck style={{ color: 'green' }} />
+                  <FaCheck className="text-green-500" />
                   {order.paidAt.substring(0, 10)}
                   </>
                 ) : (
-                  <FaTimes style={{ color: 'red' }} />
+                  <FaTimes className="text-red-500" />
                 )}
               </td>
-              <td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 {order.isDelivered ? (
                    <>
-                   <FaCheck style={{ color: 'green' }} />
+                   <FaCheck className="text-green-500" />
                   {order.deliveredAt.substring(0, 10)}
                   </>
                 ) : (
-                  <FaTimes style={{ color: 'red' }} />
+                  <FaTimes className="text-red-500" />
                 )}
               </td>
-              <td>
+              <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <Link to={`/order/${order._id}`}>
-                  <Button variant='light' className='btn-sm'>
+                  <button className="text-indigo-600 hover:text-indigo-900">
                     Details
-                  </Button>
+                  </button>
                 </Link>
               </td>
             </tr>
           ))}
         </tbody>
-      </Table>
+      </table>
 
       )}
-      </>
+      </div>
       );
-};
-
-export default OrderList
+}
