@@ -17,7 +17,7 @@ const SingleItem = () => {
   // const item = products.find((p) => p._id === itemId);
 
   const { id: itemId } = useParams();
-  const [qty, setQty] = useState(1);
+  const [qty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 

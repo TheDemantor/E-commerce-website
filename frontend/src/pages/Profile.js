@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTimes } from 'react-icons/fa';
-
-import Message from '../components/Message';
+import { Link } from 'react-router-dom';
 import Loader from '../components/Loading';
 import { toast } from 'react-toastify';
 import { useProfileMutation } from '../slices/usersApiSlice';

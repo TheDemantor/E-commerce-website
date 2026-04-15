@@ -1,18 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import { FaPlus, FaEdit, FaTrash } from 'react-icons/fa';
-import Message from '../components/Message';
-import Loader from '../components/Loading';
+import { Link } from 'react-router-dom';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import { useGetProductsQuery, useCreateProductMutation, useDeleteProductMutation } from '../slices/productApiSlice';
 import { toast } from 'react-toastify';
 
 export default function ProductList() {
   //For the query
-  const { data: products, refetch, isLoading, error } = useGetProductsQuery({});
+  const { data: products, refetch } = useGetProductsQuery({});
   //For the mutation 
-  const [createProduct, { isLoading: loadingCreate }] = useCreateProductMutation();
+  const [createProduct] = useCreateProductMutation();
 
-  const [deleteProduct, { isLoading: loadingDelete }] =
+  const [deleteProduct] =
       useDeleteProductMutation();
 
   const deleteHandler = async (id) => {
@@ -24,16 +22,6 @@ export default function ProductList() {
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
-    }
-  };
-
-  const createProductHandler = async () => {
-    // console.log("new products");
-    try {
-      await createProduct();
-      refetch();
-    } catch (err) {
-      toast.error(err?.data?.message || err.error);
     }
   };
 

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import CarouselSection from '../components/CarouselSection';
 import CategoryGrid from '../components/CategoryGrid';
